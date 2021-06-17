@@ -23,7 +23,7 @@ $(function() {
     let layer = layui.layer;
     $('#form-reg').on('submit', function(e) {
         e.preventDefault();
-        $.post('http://api-breakingnews-web.itheima.net/api/reguser', { username: $('#form-reg [name="username"]').val(), password: $('#form-reg [name="password"]').val() }, function(res) {
+        $.post('/api/reguser', { username: $('#form-reg [name="username"]').val(), password: $('#form-reg [name="password"]').val() }, function(res) {
             if (res.status !== 0)
                 return layer.msg(res.message);
             layer.msg('注册成功，请登录！');
@@ -35,7 +35,7 @@ $(function() {
     $('#form-login').submit(function(e) {
         e.preventDefault();
         $.ajax({
-            url: 'http://api-breakingnews-web.itheima.net/api/login',
+            url: '/api/login',
             method: 'post',
             data: $(this).serialize(),
             success: function(res) {
